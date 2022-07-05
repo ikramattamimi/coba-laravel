@@ -12,8 +12,8 @@ class PostController extends Controller
     public function index()
     {
         return view('posts', [
-            "title" => "Posts",
-            "posts" => Post::latest()->get()
+            "title" => "All Posts",
+            "posts" => Post::with(['user', 'category'])->latest()->get()
         ]);
     }
 
