@@ -13,14 +13,16 @@ class PostController extends Controller
     {
         return view('posts', [
             "title" => "All Posts",
-            "posts" => Post::with(['user', 'category'])->latest()->get()
+            "active" => "posts",
+            "posts" => Post::latest()->get()
         ]);
     }
 
     public function show(Post $post)
     {
         return view('post', [
-            "title" => "Posts",
+            "title" => "Single Post",
+            "active" => "posts",
             "post" => $post
         ]);
     }
@@ -30,6 +32,7 @@ class PostController extends Controller
         $model = new Post;
         return view('create', [
             "title" => "Posts",
+            "active" => "posts",
             compact('model')
         ]);
     }
